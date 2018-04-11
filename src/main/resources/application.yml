@@ -1,0 +1,41 @@
+server:
+  #contextPath: /wechatapi
+  port: 8081
+
+
+    
+spring:
+  application:
+    name: wechatapi
+ 
+
+logging:
+  level:
+    com.mio.wechatapi.controller: INFO
+    com.github.binarywang.demo.wechat: INFO
+
+wechat:
+  mp:
+    appId: wxe6d1b06307012433
+    secret: 833742787fd0918ebdbdf95ee5f0e6a5
+    token: miotest
+    aesKey: XouSIdbIhzqoU8oKeDLahY9UihrvNv1sy21x6t2job5
+
+#logging:
+#    file: ${JBOSS_HOME}/log/fwd/rre/fwd_rre.log
+#    level: 
+#         root: INFO
+#         com.fwd.rre.controller: INFO   
+#         org.apache.http: DEBUG   
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/mctest  
+#    username: root 
+#    password: root
+#    driver-class-name: com.mysql.jdbc.Driver
+#  jpa:
+#     database: MYSQL
+#     show-sql: true
+#     hibernate:
+#       ddl-auto: update
+#     properties:
+#        hibernate:dialect: org.hibernate.dialect.MySQL5Dialect
