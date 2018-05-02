@@ -8,6 +8,7 @@
 ### 2.wechat开发项目生成方式
 2.1 通过swagger的方式生成项目
 可以通过调研project-builder-controller  的 /build/createProject 方法生成项目
+/``` json
 {
   "artifactId": "gzhtest",//项目artifactId
   "groupId": "com.arba",//项目groupId
@@ -38,6 +39,7 @@
   }
 }
 
+/```
 
 2.2也可以通过访问com.arba.wechat.gzh.build.util.VelocityUtil 的main方法自动生成项目
 
