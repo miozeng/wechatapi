@@ -1,0 +1,156 @@
+package ${project.packageName}.service;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
+import org.springframework.web.client.RestTemplate;
+
+import ${project.packageName}.bean.common.WechatToken;
+import ${project.packageName}.config.WechatProperties;
+import ${project.packageName}.util.WechatApiUtil;
+import ${project.packageName}.util.WechatMessageUtil;
+
+public abstract class AbstractMsgService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(WebchatMsgService.class);
+	
+	@Autowired
+	public RestTemplate simpleRestTemplate;
+	
+	@Autowired
+	public WechatProperties wechatProperties;
+	
+	public String getAccessToken() {
+		String accessToken = WechatApiUtil.ACCESS_TOKEN;
+		if(!"".equals(accessToken) && accessToken != null){
+			logger.info(" ACCESS_TOKEN {} is exist;",accessToken);
+			return accessToken;
+		}
+		WechatToken token = null;
+		String token_url = WechatApiUtil.GET_ACCESS_TOKEN;
+		token_url = token_url.replace("APPID", wechatProperties.getAppId());
+		token_url = token_url.replace("APPSECRET", wechatProperties.getSecret());
+		logger.info("get ACCESS_TOKEN APPID={} APPSECRET={}",wechatProperties.getAppId(),wechatProperties.getSecret());
+		token = simpleRestTemplate.getForObject(token_url, WechatToken.class);
+		WechatApiUtil.ACCESS_TOKEN = token.getAccess_token();
+		return token.getAccess_token();
+	}
+	public String processRequest(HttpServletRequest request) {
+		Map<String, String> map = WechatMessageUtil.xmlToMap(request);
+		logger.info(map.toString());
+
+		// 消息类型
+		String msgType = map.get("MsgType");
+		// 默认回复一个"success"
+		String responseMessage = null;
+		// 对消息进行处理
+		if (WechatMessageUtil.MESSAGE_TEXT.equals(msgType)) {// 文本消息
+			logger.info("接收文本消息");
+			responseMessage = textMsg(map);
+		}
+        if (WechatMessageUtil.MESSAtGE_IMAGE.equals(msgType)) {//图片消息
+        	logger.info("接收图片消息");
+        	responseMessage = imageMsg(map);
+		} 
+        if (WechatMessageUtil.MESSAGE_VOICE.equals(msgType)) {//语音消息
+        	logger.info("接收语音消息");
+        	responseMessage = voiceMsg(map); 
+		}
+        if (WechatMessageUtil.MESSAGE_VIDEO.equals(msgType)) {//视频消息
+        	logger.info("接收视频消息");
+        	responseMessage = vedioMsg(map);
+		}
+        if (WechatMessageUtil.MESSAGE_SHORTVIDEO.equals(msgType)) {//小视频消息
+        	logger.info("接收小视频消息");
+        	responseMessage = shortVedioMsg(map); 
+		}
+        if (WechatMessageUtil.MESSAGE_LINK.equals(msgType)) {//链接消息
+        	logger.info("接收链接消息");
+        	responseMessage = linkMsg(map); 
+		}
+		if (WechatMessageUtil.MESSAGE_LOCATION.equals(msgType)) {// 地里位置消息
+			logger.info("接收地里位置消息");
+			responseMessage = locationMsg(map); 
+		}
+		if (WechatMessageUtil.MESSAGE_EVENT.equals(msgType)) {
+			logger.info("接收事件推送");
+			String event = map.get("Event");
+			if(!StringUtils.isEmpty(event)){
+				if(WechatMessageUtil.MESSAGE_EVENT_SUBSCRIBE.equals(event)){
+					logger.info("事件类型："+WechatMessageUtil.MESSAGE_EVENT_SUBSCRIBE);
+					responseMessage = subscribeEvent(map); 
+				}
+				if(WechatMessageUtil.MESSAGE_EVENT_UNSUBSCRIBE.equals(event)){
+					logger.info("事件类型："+WechatMessageUtil.MESSAGE_EVENT_UNSUBSCRIBE);
+					responseMessage = unsubscribeEvent(map); 
+				}
+				if(WechatMessageUtil.MESSAGE_EVENT_LOCATION_UP.equals(event)){
+					logger.info("事件类型："+WechatMessageUtil.MESSAGE_EVENT_LOCATION_UP);
+					responseMessage = locationEvent(map); 
+				}
+				if(WechatMessageUtil.MESSAGE_EVENT_CLICK.equals(event)){
+					logger.info("事件类型："+WechatMessageUtil.MESSAGE_EVENT_CLICK);
+					responseMessage = clickEvent(map); 
+				}
+				if(WechatMessageUtil.MESSAGE_EVENT_VIEW.equals(event)){
+					logger.info("事件类型："+WechatMessageUtil.MESSAGE_EVENT_VIEW);
+					responseMessage = viewEvent(map); 
+				}
+				if(WechatMessageUtil.MESSAGE_JOB_END_FINISH.equals(event)){
+					logger.info("事件类型："+WechatMessageUtil.MESSAGE_JOB_END_FINISH);
+					responseMessage = msgJobEndFinish(map); 
+				}
+			}
+			
+		}
+		
+		logger.info(responseMessage);
+		return responseMessage;
+
+	}
+	
+	public  String textMsg(Map<String, String> map){
+		return null;
+	}; 
+	public  String voiceMsg(Map<String, String> map){
+		return null;
+	}; 
+	public  String imageMsg(Map<String, String> map){
+		return null;
+	};  
+	public  String vedioMsg(Map<String, String> map){
+		return null;
+	};  
+	public  String shortVedioMsg(Map<String, String> map){
+		return null;
+	}; 
+	public  String linkMsg(Map<String, String> map){
+		return null;
+	}; 
+	public  String locationMsg(Map<String, String> map){
+		return null;
+	}; 
+	public  String subscribeEvent(Map<String, String> map){
+		return null;
+	}; 
+	public  String unsubscribeEvent(Map<String, String> map){
+		return null;
+	};  
+	public  String locationEvent(Map<String, String> map){
+		return null;
+	}; 
+	public  String clickEvent(Map<String, String> map){
+		return null;
+	}; 
+	public  String viewEvent(Map<String, String> map){
+		return null;
+	}; 
+	public  String msgJobEndFinish(Map<String, String> map){
+		return null;
+	};  
+}

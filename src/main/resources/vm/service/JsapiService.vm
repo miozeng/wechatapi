@@ -1,0 +1,29 @@
+package ${project.packageName}.service;
+
+import org.springframework.stereotype.Service;
+
+import ${project.packageName}.bean.web.JsapiTicket;
+import ${project.packageName}.bean.web.OauthReply;
+import ${project.packageName}.util.WechatApiUtil;
+
+@Service
+public class JsapiService extends BaseWechatService{
+	
+	public JsapiTicket getJsapiTicket( ) {
+		String accessToken = this.getAccessToken();
+		String url = WechatApiUtil.repleaceAccessToken(WechatApiUtil.GET_JSAPI_TICKET, accessToken) ;
+		
+		return simpleRestTemplate.getForObject(url, JsapiTicket.class);
+	}	
+	
+	public OauthReply getOpenidByCode( String code) {
+		String url = WechatApiUtil.GET_OPENID_BY_CODE;
+		url = url.replace("APPID", wechatProperties.getAppId());
+		url = url.replace("SECRET", wechatProperties.getSecret());
+		url = url.replace("CODE", code);
+		OauthReply r = simpleRestTemplate.getForObject(url, OauthReply.class);
+		
+		return r;
+	}	
+	
+}

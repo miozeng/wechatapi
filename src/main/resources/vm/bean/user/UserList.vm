@@ -1,0 +1,49 @@
+package ${project.packageName}.bean.user;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class UserList {
+
+	private Integer total;
+	
+	private Integer count;
+	
+	private UserListData data;
+	
+	@JsonProperty("next_openid")
+	private String nextOpenid;
+
+	public Integer getTotal() {
+		return total;
+	}
+
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	public UserListData getData() {
+		return data;
+	}
+
+	public void setData(UserListData data) {
+		this.data = data;
+	}
+
+	public String getNextOpenid() {
+		return nextOpenid;
+	}
+
+	public void setNextOpenid(String nextOpenid) {
+		this.nextOpenid = nextOpenid;
+	}
+	
+	
+}

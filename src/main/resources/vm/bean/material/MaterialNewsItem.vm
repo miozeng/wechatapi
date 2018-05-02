@@ -1,0 +1,5 @@
+package ${project.packageName}.bean.material;
+
+public class MaterialNewsItem extends MaterialItem{
+
+}

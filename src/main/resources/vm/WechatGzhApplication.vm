@@ -1,0 +1,37 @@
+package ${project.packageName};
+
+import java.nio.charset.StandardCharsets;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
+
+import ${project.packageName}.util.WxMappingJackson2HttpMessageConverter;
+
+@SpringBootApplication
+public class WechatGzhApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WechatGzhApplication.class, args);
+	}
+	
+	@Autowired
+	private RestTemplateBuilder builder;
+
+	@Bean
+	public RestTemplate restTemplate()  {
+        HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        httpRequestFactory.setConnectionRequestTimeout(30000);
+        httpRequestFactory.setConnectTimeout(30000);
+        httpRequestFactory.setReadTimeout(30000);
+        RestTemplate restTemplate = new RestTemplate(httpRequestFactory);
+        restTemplate.getMessageConverters().add(new WxMappingJackson2HttpMessageConverter());
+        restTemplate.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return restTemplate;
+    }
+}

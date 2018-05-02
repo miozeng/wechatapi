@@ -1,0 +1,29 @@
+{
+     "button":[
+     {    
+        "type":"click",
+        "name":"测试",
+         "key":"V1001_TODAY_MUSIC" },
+    {     "name":"菜单",
+        "sub_button":[
+        {            
+            "type":"view",
+            "name":"搜索",
+            "url":"http://www.soso.com/"},
+     
+             {
+	        "type":"click",
+	        "name":"嗯。。。",
+	        "key":"V1001_GOOD"
+	           }]
+ }],
+"matchrule":{
+
+  "sex":"2",
+  "country":"中国",
+  "province":"湖南",
+  "city":"长沙",
+  "client_platform_type":"1",
+  "language":"zh_CN"
+  }
+}

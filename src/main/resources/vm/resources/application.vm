@@ -1,0 +1,29 @@
+server:
+  port: ${project.port}
+
+  
+spring:
+  application:
+    name: ${project.projectName}
+#if( ${project.useDb} )
+  datasource:
+    url:  ${project.dbConfig.url}
+    username:  ${project.dbConfig.username}
+    password:  ${project.dbConfig.password}
+    driver-class-name:  ${project.dbConfig.driverClassName}
+  jpa:
+     show-sql: true
+     hibernate:
+       ddl-auto: update
+     properties:
+        hibernate:dialect: ${project.dbConfig.dbDialect}
+#end
+
+logging:
+  level:
+    root: INFO
+    ${project.packageName}.controller: INFO
+    ${project.packageName}.service: INFO
+
+
+

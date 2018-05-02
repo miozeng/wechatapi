@@ -1,0 +1,6 @@
+package ${project.packageName}.bean.analysis;
+
+public enum UserMethodEnum {
+	getusersummary,getusercumulate;
+
+}

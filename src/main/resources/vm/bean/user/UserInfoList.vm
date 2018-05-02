@@ -1,0 +1,23 @@
+package ${project.packageName}.bean.user;
+
+import java.util.List;
+
+import ${project.packageName}.bean.common.WechatErrorMsg;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class UserInfoList extends WechatErrorMsg{
+	
+	@JsonProperty("user_info_list")
+	private List<WechatUser> userInfoList;
+
+	public List<WechatUser> getUserInfoList() {
+		return userInfoList;
+	}
+
+	public void setUserInfoList(List<WechatUser> userInfoList) {
+		this.userInfoList = userInfoList;
+	}
+	
+	
+
+}

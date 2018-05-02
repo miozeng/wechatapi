@@ -1,0 +1,37 @@
+package ${project.packageName}.bean.msg.sendall;
+
+import ${project.packageName}.bean.common.WechatErrorMsg;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class SendAllReplay extends WechatErrorMsg{
+	
+
+	
+	@JsonProperty("msg_id")
+	private String msgId;
+	
+	@JsonProperty("msg_data_id")
+	private String msgDataId;
+
+	public String getMsgId() {
+		return msgId;
+	}
+
+	public void setMsgId(String msgId) {
+		this.msgId = msgId;
+	}
+
+	public String getMsgDataId() {
+		return msgDataId;
+	}
+
+	public void setMsgDataId(String msgDataId) {
+		this.msgDataId = msgDataId;
+	}
+
+
+
+	
+	
+
+}

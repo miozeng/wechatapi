@@ -1,0 +1,5 @@
+wechat.appId = ${project.wechat.appId}
+wechat.secret = ${project.wechat.secret}
+wechat.token = ${project.wechat.token}
+wechat.aesKey =${project.wechat.aesKey}
+wechat.jsurl = ${project.wechat.jsurl}

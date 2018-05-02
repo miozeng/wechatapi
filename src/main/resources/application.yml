@@ -15,20 +15,14 @@ logging:
     com.github.binarywang.demo.wechat: INFO
 
 
+
+
 wechat:
   mp:
-    appId: wx24eb3810aaac8ee5
-    secret: 27fce66ee9ff3d9c73c0e5e23b451c68
+    appId: xxx
+    secret: xx
     token: miotest
-    aesKey: XouSIdbIhzqoU8oKeDLahY9UihrvNv1sy21x6t2job5
-    jsurl: http://s5d4xb.natappfree.cc
-
-#wechat:
- # mp:
-#    appId: wxe6d1b06307012433
-#    secret: 833742787fd0918ebdbdf95ee5f0e6a5
-#    token: miotest
-#    aesKey: XouSIdbIhzqoU8oKeDLahY9UihrvNv1sy21x6t2job5
+    aesKey: xxx
 
 #logging:
 #    file: ${JBOSS_HOME}/log/fwd/rre/fwd_rre.log

@@ -1,0 +1,7 @@
+package ${project.packageName}.domain;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface EmailFormRepository extends CrudRepository<EmailForm, Long> {
+
+}

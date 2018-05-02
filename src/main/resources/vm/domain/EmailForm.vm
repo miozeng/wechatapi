@@ -1,0 +1,51 @@
+package ${project.packageName}.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class EmailForm  extends AbstractEntity{
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2911378011025464523L;
+
+	@Id
+	@GeneratedValue
+	private Long efId;
+	
+	private String email;
+	
+	@Column(columnDefinition="nvarchar(500)")
+	private String name;
+
+	public Long getEfId() {
+		return efId;
+	}
+
+	public void setEfId(Long efId) {
+		this.efId = efId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+}
