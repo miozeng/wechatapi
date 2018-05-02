@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.mio.wechat.gzh.bean.token.JsapiTicket;
+import com.mio.wechat.gzh.bean.common.JsapiTicket;
 import com.mio.wechat.gzh.util.WechatApiUtil;
 
 @Service

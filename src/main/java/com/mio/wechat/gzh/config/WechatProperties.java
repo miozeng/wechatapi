@@ -32,6 +32,8 @@ public class WechatProperties {
    * 设置微信公众号的EncodingAESKey
    */
   private String aesKey;
+  
+  private String jsurl;
 
   public String getAppId() {
     return this.appId;
@@ -65,7 +67,17 @@ public class WechatProperties {
     this.aesKey = aesKey;
   }
 
-  @Override
+  
+  
+  public String getJsurl() {
+	return jsurl;
+}
+
+public void setJsurl(String jsurl) {
+	this.jsurl = jsurl;
+}
+
+@Override
   public String toString() {
     return ToStringBuilder.reflectionToString(this,
         ToStringStyle.MULTI_LINE_STYLE);

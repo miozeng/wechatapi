@@ -1,54 +1,53 @@
 package com.mio.wechat.gzh.bean.msg;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 public class BaseWechatMessage {
 	/**
 	 * 开发者微信号
 	 */
-	private String ToUserName;
+	@XStreamAlias("ToUserName")
+	private String toUserName;
 	/**
 	 * 发送方帐号（一个OpenID）
 	 */
-	private String FromUserName;
+	@XStreamAlias("FromUserName")
+	private String fromUserName;
 	/**
 	 * 消息创建时间 （整型）
 	 */
-	private long CreateTime;
+	@XStreamAlias("CreateTime")
+	private long createTime;
 	/**
 	 * 消息类型
 	 */
-	private String MsgType;
-	/**
-	 * 消息id，64位整型
-	 */
-	private String MsgId;
+	@XStreamAlias("MsgType")
+	private String msgType;
 	public String getToUserName() {
-		return ToUserName;
+		return toUserName;
 	}
 	public void setToUserName(String toUserName) {
-		ToUserName = toUserName;
+		this.toUserName = toUserName;
 	}
 	public String getFromUserName() {
-		return FromUserName;
+		return fromUserName;
 	}
 	public void setFromUserName(String fromUserName) {
-		FromUserName = fromUserName;
+		this.fromUserName = fromUserName;
 	}
 	public long getCreateTime() {
-		return CreateTime;
+		return createTime;
 	}
 	public void setCreateTime(long createTime) {
-		CreateTime = createTime;
+		this.createTime = createTime;
 	}
 	public String getMsgType() {
-		return MsgType;
+		return msgType;
 	}
 	public void setMsgType(String msgType) {
-		MsgType = msgType;
+		this.msgType = msgType;
 	}
-	public String getMsgId() {
-		return MsgId;
-	}
-	public void setMsgId(String msgId) {
-		MsgId = msgId;
-	}
+	
+
+
 }

@@ -16,11 +16,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mio.wechat.gzh.bean.common.ServerIpReply;
 import com.mio.wechat.gzh.config.WechatProperties;
 import com.mio.wechat.gzh.service.WebchatMsgService;
 import com.mio.wechat.gzh.util.Sha1Util;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+
+@Api(value = "/", description = " 微信接口验证与接入")
 @RestController
 public class SignatureController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -31,7 +36,8 @@ public class SignatureController {
 	@Autowired
 	private WechatProperties wechatProperties;
 	
-	@GetMapping(value = "/portal")
+	@ApiOperation(value = "微信接入", notes = " 将此方法的url接入到微信接口配置信息里面 ")
+	@GetMapping(value = "/wechat")
 	@ResponseBody
 	public String signature(
 			@RequestParam(name = "signature", required = false) String signature,
@@ -57,14 +63,33 @@ public class SignatureController {
 
 	}
 	
-
-	@PostMapping(value = "/portal")
+	@ApiOperation(value = "微信接入", notes = "用于接收微信事件与消息 ")
+	@PostMapping(value = "/wechat")
 	@ResponseBody
-	public void wechatServicePost( PrintWriter out, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String responseMessage = webchatMsgService.processRequest(request);
+	public void wechatServicePost(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("utf-8");
+		String responseMessage = webchatMsgService.processRequest(request);
+
+		logger.info(responseMessage);
+		PrintWriter out = response.getWriter();
+
 		out.print(responseMessage);
-		out.flush();
+
+		out.close();
+	}
+	
+	@ApiOperation(value = "获取微信服务器IP地址", notes = "如果公众号基于安全等考虑，需要获知微信服务器的IP地址列表，以便进行相关限制，可以通过该接口获得微信服务器IP地址列表或者IP网段信息。 ")
+	@GetMapping(value = "/getWechatIp")
+	@ResponseBody
+	public ServerIpReply getWechatIp() {
+		this.logger.info("获取微信服务器IP地址");
+
+		ServerIpReply ip= webchatMsgService.getServerIp();
+
+		return ip;
+
 	}
 	
 

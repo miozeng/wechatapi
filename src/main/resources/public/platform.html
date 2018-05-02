@@ -1,0 +1,33 @@
+<html>  
+<head>  
+<title>ÊÖ»úÐÍºÅ</title>  
+<script type="text/javascript">  
+  
+function checkPlatform(){  
+  
+  if(/android/i.test(navigator.userAgent)){  
+  
+      document.write("Android");  
+  
+  }  
+  
+  if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){  
+  
+      document.write("iOS");  
+  
+  }  
+    if(/(Windows Phone|windows|Windows)/i.test(navigator.userAgent)){  
+  
+      document.write("Windows Phone");  
+  
+  }  
+  
+}  
+  
+</script>  
+</head>  
+<body>  
+<input id="id0" type="button" value="UserAgent" onclick="alert(navigator.userAgent)" />  
+<input id="id1" type="button" value="CheckPlatform" onclick="checkPlatform()" />  
+</body>  
+</html> 

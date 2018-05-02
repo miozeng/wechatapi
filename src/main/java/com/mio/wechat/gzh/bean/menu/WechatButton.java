@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class WechatButton implements Serializable{
 	/**
 	 * 
@@ -14,11 +16,18 @@ public class WechatButton implements Serializable{
 
 	private String type;
 	private String key;
-	private List<WechatButton> sub_button = new ArrayList<>();;
+	
+	@JsonProperty("sub_button")
+	private List<WechatButton> subButton = new ArrayList<>();
+	
 	private String url;
+	
 	private String appid;
+	
 	private String pagepath;
-	private String media_id;
+	
+	@JsonProperty("media_id")
+	private String mediaId;
 
 	public String getName() {
 		return name;
@@ -69,21 +78,22 @@ public class WechatButton implements Serializable{
 		this.pagepath = pagepath;
 	}
 
-	public List<WechatButton> getSub_button() {
-		return sub_button;
+	public List<WechatButton> getSubButton() {
+		return subButton;
 	}
 
-	public void setSub_button(List<WechatButton> sub_button) {
-		this.sub_button = sub_button;
+	public void setSubButton(List<WechatButton> subButton) {
+		this.subButton = subButton;
 	}
 
-	public String getMedia_id() {
-		return media_id;
+	public String getMediaId() {
+		return mediaId;
 	}
 
-	public void setMedia_id(String media_id) {
-		this.media_id = media_id;
+	public void setMediaId(String mediaId) {
+		this.mediaId = mediaId;
 	}
+
 
 
 

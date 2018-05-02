@@ -1,0 +1,38 @@
+package com.mio.wechat.gzh.bean.msg;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+/**
+ * 回复音乐消息
+ * <xml><ToUserName>< ![CDATA[toUser] ]></ToUserName>
+ * <FromUserName>< ![CDATA[fromUser] ]></FromUserName><CreateTime>12345678</CreateTime><MsgType>< ![CDATA[music] ]></MsgType>
+ * <Music>
+ * <Title>< ![CDATA[TITLE] ]></Title>
+ * <Description>< ![CDATA[DESCRIPTION] ]></Description>
+ * <MusicUrl>< ![CDATA[MUSIC_Url] ]></MusicUrl>
+ * <HQMusicUrl>< ![CDATA[HQ_MUSIC_Url] ]></HQMusicUrl
+ * ><ThumbMediaId>< ![CDATA[media_id] ]></ThumbMediaId>
+ * </Music>
+ * </xml>
+ * @author mio
+ *
+ */
+public class MusicMessage extends BaseWechatMessage{
+	
+	@XStreamAsAttribute//以属性的形式出现
+	@XStreamAlias("Music")
+	private Music music;
+
+	public Music getMusic() {
+		return music;
+	}
+
+	public void setMusic(Music music) {
+		this.music = music;
+	}
+
+	
+	
+	
+}

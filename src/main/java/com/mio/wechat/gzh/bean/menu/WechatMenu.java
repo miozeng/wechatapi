@@ -3,6 +3,7 @@ package com.mio.wechat.gzh.bean.menu;
 import java.util.List;
 
 public class WechatMenu {
+	
 	private List<WechatButton> button;
 	
 

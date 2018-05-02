@@ -1,4 +1,4 @@
-package com.mio.wechat.gzh.bean.token;
+package com.mio.wechat.gzh.bean.common;
 
 public class WechatToken {
 
