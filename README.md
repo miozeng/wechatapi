@@ -41,7 +41,7 @@
 
 ``` 
 
-2.2也可以通过访问com.arba.wechat.gzh.build.util.VelocityUtil 的main方法自动生成项目
+2.2也可以通过访问com.wechat.gzh.build.util.VelocityUtil 的main方法自动生成项目
 
 
 ### 3.说明
